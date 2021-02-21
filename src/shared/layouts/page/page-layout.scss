@@ -1,0 +1,19 @@
+.page-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  > .page-header {
+    font-weight: 500;
+    font-size: 1.2em;
+    flex: 0 1 auto;
+  }
+
+  > .page-body {
+    flex: 1 0 auto;
+  }
+
+  > .page-footer {
+    flex: 0 1 auto;
+  }
+}

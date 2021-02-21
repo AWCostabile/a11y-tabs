@@ -1,0 +1,63 @@
+/* Base on "Single Element CSS Spinner" - https://projects.lukehaas.me/css-loaders/ */
+
+.spinner {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.spinner-c,
+.spinner-l,
+.spinner-r {
+  -ms-transform: translateZ(0);
+  -webkit-animation: withSpinner 1s infinite ease-in-out;
+  -webkit-transform: translateZ(0);
+  animation: withSpinner 1s infinite ease-in-out;
+  background: inherit;
+  color: inherit;
+  font-size: 11px;
+  top: 10%;
+  height: 80%;
+  position: absolute;
+  text-indent: -9999em;
+  transform: translateZ(0);
+  width: 10%;
+}
+
+.spinner-c {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.spinner-l {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+@-webkit-keyframes withSpinner {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 80%;
+  }
+  40% {
+    box-shadow: 0 -30%;
+    height: 100%;
+    top: 0;
+  }
+}
+
+@keyframes withSpinner {
+  0%,
+  80%,
+  100% {
+    box-shadow: 0 0;
+    height: 80%;
+  }
+  40% {
+    box-shadow: 0 -30%;
+    height: 100%;
+    top: 0;
+  }
+}

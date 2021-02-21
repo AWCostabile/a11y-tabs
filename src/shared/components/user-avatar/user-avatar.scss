@@ -1,0 +1,13 @@
+.user-avatar {
+  box-sizing: border-box;
+  border-radius: 999px;
+  border-style: solid;
+  position: relative;
+
+  > div {
+    font-weight: 600;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+  }
+}

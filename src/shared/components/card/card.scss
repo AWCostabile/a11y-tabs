@@ -1,0 +1,40 @@
+.card {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25), 0px 3px 6px rgba(0, 0, 0, 0.12),
+    0px 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+
+  > .header {
+    padding: 16px;
+    flex: 0 1 auto;
+  }
+
+  > .body {
+    flex: 1 0 auto;
+    padding: 16px;
+
+    &.with-hf {
+      padding: 0 16px;
+    }
+
+    &.with-h {
+      padding: 0 16px 16px;
+    }
+
+    &.with-f {
+      padding: 16px 16px 0;
+    }
+  }
+
+  > .footer {
+    flex: 0 1 auto;
+    padding: 16px;
+  }
+}
+
+.card-section-header {
+  margin-top: -4px;
+}

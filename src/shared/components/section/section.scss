@@ -1,0 +1,47 @@
+.row-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.row-section-cell:nth-child(n + 2) {
+  margin-left: 16px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-body {
+  flex: 1 0 auto;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 auto;
+  font-weight: 500;
+
+  > * {
+    flex: 1 1 auto;
+  }
+
+  &.bottom-border {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+  }
+}
+.section-footer {
+  display: flex;
+  flex-direction: row;
+  flex: 0 1 auto;
+
+  > * {
+    flex: 1 1 auto;
+  }
+
+  &.top-border {
+    border-top: 1px solid #ddd;
+    padding-top: 4px;
+  }
+}
