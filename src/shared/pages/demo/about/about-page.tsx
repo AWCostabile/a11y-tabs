@@ -13,7 +13,7 @@ export const AboutPage: React.FC = () => (
       can be referenced via its associated URL, and can be opened in a new tab
       using the middle-click function.
     </p>
-    <Code>{``}</Code>
+    <Code>{`<Tab />`}</Code>
     <p></p>
   </DemoLayout>
 );
