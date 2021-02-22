@@ -31,32 +31,41 @@ export const BonusApiTestingPage: React.FC = () => {
           <Spinner size={48} />
         </div>
       ) : (
-        users.map((user) => (
-          <Card className="user-card" key={user.id}>
-            <RowSection>
-              <RowSectionCell>
-                <UserAvatar
-                  color={user.color}
-                  givenName={user.givenName}
-                  familyName={user.familyName}
-                />
-              </RowSectionCell>
-              <RowSectionCell style={{ paddingTop: 5, width: 140 }}>
-                {user.givenName} {user.familyName}
-              </RowSectionCell>
-              <RowSectionCell grow style={{ paddingTop: 5 }}>
-                {user.email}
-              </RowSectionCell>
-              <RowSectionCell style={{ paddingTop: 5 }}>
-                <em>
-                  {moment(user.createdAt).format(
-                    DateFormats.LocaleDayMonthDateTimeAbr,
-                  )}
-                </em>
-              </RowSectionCell>
-            </RowSection>
-          </Card>
-        ))
+        <React.Fragment>
+          {users.map((user) => (
+            <Card className="user-card" key={user.id}>
+              <RowSection>
+                <RowSectionCell>
+                  <UserAvatar
+                    color={user.color}
+                    givenName={user.givenName}
+                    familyName={user.familyName}
+                  />
+                </RowSectionCell>
+                <RowSectionCell style={{ paddingTop: 5, width: 140 }}>
+                  {user.givenName} {user.familyName}
+                </RowSectionCell>
+                <RowSectionCell grow style={{ paddingTop: 5 }}>
+                  {user.email}
+                </RowSectionCell>
+                <RowSectionCell style={{ paddingTop: 5 }}>
+                  <em>
+                    {moment(user.createdAt).format(
+                      DateFormats.LocaleDayMonthDateTimeAbr,
+                    )}
+                  </em>
+                </RowSectionCell>
+              </RowSection>
+            </Card>
+          ))}
+          <br />
+          <p>
+            <em>
+              <strong>Please Note</strong> The Avatar colours are set by a third
+              party API and therefore may not be a11y compliant.
+            </em>
+          </p>
+        </React.Fragment>
       )}
     </DemoLayout>
   );
