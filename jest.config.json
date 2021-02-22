@@ -1,4 +1,8 @@
 {
+  "globals": {
+    "BASE_URL": "http://localhost:3001",
+    "IS_DEVELOPMENT": false
+  },
   "roots": ["__tests__"],
   "modulePaths": ["node_modules", "src", "__tests__"],
   "moduleDirectories": ["node_modules", "src", "<rootDir>", "__tests__"],

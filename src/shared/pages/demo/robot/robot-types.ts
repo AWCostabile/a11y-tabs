@@ -3,6 +3,7 @@ export enum RobotActionType {
   ClearBoard,
   MoveForward,
   PlaceOnBoard,
+  PlaceRandomly,
   ReportLocation,
   RotateLeft,
   RotateRight,
@@ -21,6 +22,14 @@ export interface IRobotCoords {
   y: number;
 }
 
+export type RobotAction<State extends object | undefined = undefined> = {
+  type: RobotActionType;
+} & (State extends undefined
+  ? {}
+  : {
+      state: State;
+    });
+
 export interface IRobotReducerConfig {
   bounds: IRobotCoords;
   maxQuotedLines?: number;
@@ -31,4 +40,10 @@ export interface IRobotState {
   direction: RobotDirection;
   isOnBoard?: boolean;
   quotedText: string[];
+}
+
+export interface IRobotPlace {
+  f: RobotDirection;
+  x: number;
+  y: number;
 }

@@ -6,8 +6,10 @@ import {
   getRobotRightHandTurn,
 } from './robot-utils';
 import {
+  IRobotPlace,
   IRobotReducerConfig,
   IRobotState,
+  RobotAction,
   RobotActionType,
   RobotDirection,
 } from './robot-types';
@@ -20,23 +22,32 @@ export const createRobotReducer = ({
   maxQuotedLines = 10,
 }: IRobotReducerConfig) => (
   state: IRobotState,
-  action: RobotActionType,
+  action: RobotAction<any>,
 ): IRobotState => {
   if (
     !state.isOnBoard &&
     ![RobotActionType.PlaceOnBoard, RobotActionType.ReportLocation].includes(
-      action,
+      action.type,
     )
   ) {
     return state;
   }
 
-  switch (action) {
+  switch (action.type) {
     case RobotActionType.ClearBoard:
       return { ...initialState, quotedText: state.quotedText };
     case RobotActionType.MoveForward:
       return { ...state, coords: getNextRobotCoords(state, bounds) };
     case RobotActionType.PlaceOnBoard:
+      const nextState = (action as RobotAction<IRobotPlace>).state;
+
+      return {
+        ...state,
+        coords: { x: nextState.x || 0, y: nextState.y || 0 },
+        direction: nextState.f || RobotDirection.NORTH,
+        isOnBoard: true,
+      };
+    case RobotActionType.PlaceRandomly:
       return { ...state, ...getRandomDirectionAndPosition(bounds, true) };
     case RobotActionType.ReportLocation:
       const report = getRobotQueryText(state, bounds);

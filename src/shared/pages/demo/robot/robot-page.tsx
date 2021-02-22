@@ -30,13 +30,23 @@ export const RobotPage: React.FC = () => {
           className="robot-controls-container"
           header={
             <RobotControls
-              handleClearBoard={() => onAction(RobotActionType.ClearBoard)}
-              handleMoveForward={() => onAction(RobotActionType.MoveForward)}
-              handlePlaceOnBoard={() => onAction(RobotActionType.PlaceOnBoard)}
-              handleLeftTurn={() => onAction(RobotActionType.RotateLeft)}
-              handleRightTurn={() => onAction(RobotActionType.RotateRight)}
+              handleClearBoard={() =>
+                onAction({ type: RobotActionType.ClearBoard })
+              }
+              handleMoveForward={() =>
+                onAction({ type: RobotActionType.MoveForward })
+              }
+              handlePlaceOnBoard={() =>
+                onAction({ type: RobotActionType.PlaceOnBoard })
+              }
+              handleLeftTurn={() =>
+                onAction({ type: RobotActionType.RotateLeft })
+              }
+              handleRightTurn={() =>
+                onAction({ type: RobotActionType.RotateRight })
+              }
               handleReportLocation={() =>
-                onAction(RobotActionType.ReportLocation)
+                onAction({ type: RobotActionType.ReportLocation })
               }
               isOnBoard={state.isOnBoard}
             />

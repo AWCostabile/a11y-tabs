@@ -70,13 +70,19 @@ export const getRobotRightHandTurn = (
 // represent the current position of the robot and the direction
 // in which it is facing
 export const getRobotQueryText = (
-  { coords, direction, isOnBoard }: IRobotState,
+  {
+    coords,
+    direction,
+    isOnBoard,
+  }: Pick<IRobotState, 'coords' | 'direction' | 'isOnBoard'>,
   bounds: IRobotCoords,
 ): string | undefined => {
   if (!isOnBoard) {
-    console.warn(
-      'Tried to make the robot report when it is currently not on the board!',
-    );
+    if (IS_DEVELOPMENT) {
+      console.warn(
+        'Tried to make the robot report when it is currently not on the board!',
+      );
+    }
 
     return;
   }

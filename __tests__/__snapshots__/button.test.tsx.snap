@@ -4,6 +4,7 @@ exports[`Testing of <Button /> a11y friendliness should capture text from \`chil
 <button
   aria-label="Test String"
   className="button"
+  onMouseUp={[Function]}
 >
   <span
     className="button-label"
@@ -17,6 +18,7 @@ exports[`Testing of <Button /> a11y friendliness should capture text nested with
 <button
   aria-label="This is a bold button"
   className="button"
+  onMouseUp={[Function]}
 >
   <span
     className="button-label"
@@ -34,6 +36,7 @@ exports[`Testing of <Button /> a11y friendliness should ignore non text elements
 <button
   aria-label="A11y Button"
   className="button"
+  onMouseUp={[Function]}
 >
   <span
     className="button-label"
