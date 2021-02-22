@@ -62,7 +62,7 @@ export const RobotPage: React.FC = () => {
               .join('\n ')}
             {hasOutput && '\n\n'}
             {`
- Keboard:    Action:
+ Keyboard:   Action:
  ---------------------------------------------------------------
    ↑         Move Robot
    →         Turn Robot 90° Clock-Wise
