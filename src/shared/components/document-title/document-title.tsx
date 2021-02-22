@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { TitleContext } from 'shared/utils/title';
+import { TitleContext } from './title-context';
 
 interface IDocumentTitleProps {
   title?: string;

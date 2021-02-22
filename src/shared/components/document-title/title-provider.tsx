@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { TitleContext } from 'shared/utils/title';
 import { useDebounce } from 'shared/utils/use-debounce';
+import { TitleContext } from './title-context';
 
 export const TitleProvider: React.FC = ({ children }) => {
   const [title, internalSetTitle] = useState('loading...');
