@@ -17,9 +17,14 @@ export const NavBar: React.FC<INavBarProps> = ({ navRoutes, userInfo }) => (
     <RowSectionCell>
       <Image alt="accessibility logo" path={LOGO} width={48} height={28} />
     </RowSectionCell>
-    <RowSectionCell grow>
+    <RowSectionCell ariaRole="tablist" grow>
       {navRoutes.map((navRoute) => (
-        <NavButton className="nav-item" key={navRoute.path} to={navRoute.path}>
+        <NavButton
+          className="nav-item"
+          key={navRoute.path}
+          id={navRoute.id}
+          to={navRoute.path}
+        >
           {navRoute.label}
         </NavButton>
       ))}

@@ -5,12 +5,14 @@ import { ISectionFooter, SectionFooter } from './section-footer';
 import { ISectionHeader, SectionHeader } from './section-header';
 
 export interface ISectionProps extends IUiComponent {
+  ariaLabel?: AriaAttributes['aria-labelledby'];
   ariaRole?: AriaAttributes['aria-roledescription'];
   header?: ISectionHeader | ReactNode;
   footer?: ISectionFooter | ReactNode;
 }
 
 export const ColSection: React.FC<ISectionProps> = ({
+  ariaLabel,
   ariaRole,
   children,
   className,
@@ -28,7 +30,7 @@ export const ColSection: React.FC<ISectionProps> = ({
       ) : (
         header && <SectionHeader title={header} />
       )}
-      <div className="section-body" role={ariaRole}>
+      <div aria-labelledby={ariaLabel} className="section-body" role={ariaRole}>
         {children}
       </div>
       {sectionFooter?.actions || sectionFooter?.content ? (

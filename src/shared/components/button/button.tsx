@@ -8,12 +8,14 @@ export interface IButtonProps extends IUiComponent {
   ariaHidden?: boolean;
   ariaRole?: AriaAttributes['aria-roledescription'];
   disabled?: boolean;
+  id?: string;
   label?: string;
   onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
   onClick?: (event: ClickEvent<HTMLButtonElement>) => void;
   onFocus?: (event: FocusEvent<HTMLButtonElement>) => void;
   onMiddleClick?: (event: ClickEvent<HTMLButtonElement>) => void;
   primary?: boolean;
+  selected?: boolean;
   ref?: RefObject<HTMLButtonElement>;
 }
 
@@ -32,6 +34,7 @@ export const Button = React.forwardRef<
       onClick,
       onMiddleClick,
       primary,
+      selected,
       ...rest
     },
     ref,
@@ -43,7 +46,7 @@ export const Button = React.forwardRef<
         {...rest}
         aria-label={ariaLabel}
         aria-hidden={disabled || ariaHidden}
-        aria-roledescription={ariaRole}
+        aria-selected={selected}
         className={classNames(
           'button',
           primary && 'primary',
@@ -59,6 +62,7 @@ export const Button = React.forwardRef<
           }
         }}
         ref={ref}
+        role={ariaRole}
       >
         <span className="button-label">{children}</span>
       </button>

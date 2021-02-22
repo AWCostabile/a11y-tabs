@@ -10,13 +10,17 @@ export interface ISectionHeader {
   actions?: IUiAction[];
   bottomBorder?: boolean;
   className?: string;
+  isTabList?: boolean;
+  selectedAction?: string;
   title?: ReactNode;
 }
 
 export const SectionHeader: React.FC<ISectionHeader> = ({
   actions,
+  selectedAction,
   bottomBorder,
   className,
+  isTabList,
   title,
 }) => (
   <div
@@ -28,9 +32,17 @@ export const SectionHeader: React.FC<ISectionHeader> = ({
   >
     {title && <div className="section-header-title">{title}</div>}
     {actions && (
-      <UiActionContainer align="right" className="section-header-actions">
+      <UiActionContainer
+        align="right"
+        className="section-header-actions"
+        isTabList={isTabList}
+      >
         {actions.map((action, index) => (
-          <UiAction key={index} {...action} />
+          <UiAction
+            key={action.id || index}
+            selected={!!selectedAction && selectedAction === action.id}
+            {...action}
+          />
         ))}
       </UiActionContainer>
     )}

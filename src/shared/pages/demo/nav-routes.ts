@@ -8,16 +8,19 @@ export const demoRoutes: Array<
 > = [
   {
     component: AboutPage,
+    id: 'about',
     label: 'About',
     path: '/demo/about',
   },
   {
     component: RobotPage,
+    id: 'robot',
     label: 'Robot Game',
     path: '/demo/robot',
   },
   {
     component: BonusApiTestingPage,
+    id: 'bonus',
     label: 'Bonus Page',
     path: '/demo/bonus-page',
   },

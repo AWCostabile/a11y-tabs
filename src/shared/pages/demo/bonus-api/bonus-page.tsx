@@ -24,7 +24,11 @@ export const BonusApiTestingPage: React.FC = () => {
   // );
 
   return (
-    <DemoLayout navRoutes={demoRoutes} subTitle="User Settings">
+    <DemoLayout
+      navRoutes={demoRoutes}
+      subTitle="User Settings"
+      tabLabel="bonus"
+    >
       <p>Demonstration of Fetching and Displaying User Information</p>
       {users === null ? (
         <div className="place-holder">

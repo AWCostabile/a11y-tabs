@@ -7,8 +7,8 @@ export const AppLayout: React.FC = ({ children }) => (
     <header className="app-header">
       <NavBar
         navRoutes={[
-          { path: '/home', label: 'Home' },
-          { path: '/demo', label: 'Demo' },
+          { path: '/home', id: 'home', label: 'Home' },
+          { path: '/demo', id: 'demo', label: 'Demo' },
         ]}
         userInfo={{
           givenName: 'Anthony',

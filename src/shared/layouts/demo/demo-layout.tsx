@@ -7,12 +7,14 @@ import { INavRoute } from 'shared/types/nav-routes';
 interface IDemoLayout {
   navRoutes: INavRoute[];
   subTitle?: string;
+  tabLabel?: string;
 }
 
 export const DemoLayout: React.FC<IDemoLayout> = ({
   children,
   navRoutes,
   subTitle,
+  tabLabel,
 }) => {
   const match = useRouteMatch();
 
@@ -20,14 +22,22 @@ export const DemoLayout: React.FC<IDemoLayout> = ({
     <DocumentTitle title={subTitle}>
       <ColSection
         ariaRole="tabpanel"
+        ariaLabel={tabLabel}
         header={{
-          actions: navRoutes.map(({ path, label }) => ({
-            label,
-            path,
-            primary: match.path === path,
-          })),
+          actions: navRoutes.map(({ id, path, label }) => {
+            const selected = match.path === path;
+
+            return {
+              label,
+              id,
+              path,
+              primary: selected,
+              selected,
+            };
+          }),
           bottomBorder: true,
           title: subTitle,
+          isTabList: true,
         }}
       >
         {children}

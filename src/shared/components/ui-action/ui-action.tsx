@@ -5,23 +5,28 @@ import { NavButton } from 'shared/components/nav-button';
 export interface IUiAction {
   action?: () => void;
   disabled?: boolean;
+  id?: string;
   icon?: ReactNode;
   path?: string;
   label?: ReactNode;
   primary?: boolean;
+  selected?: boolean;
+  tabGroup?: boolean;
 }
 
 export const UiAction: React.FC<IUiAction> = ({
   action,
   disabled,
   icon,
+  id,
   label,
   path,
   primary,
+  selected,
 }) => {
   if (icon) {
     return (
-      <div className="ui-action-icon">
+      <div id={id} className="ui-action-icon">
         <div className="icon" onClick={disabled ? undefined : action}>
           {icon}
         </div>
@@ -29,19 +34,21 @@ export const UiAction: React.FC<IUiAction> = ({
     );
   }
 
-  const buttonProps = { disabled, primary };
+  const buttonProps = {
+    className: 'ui-action-button',
+    disabled,
+    id,
+    primary,
+    selected,
+  };
 
-  return (
-    <div className="ui-action-button">
-      {path ? (
-        <NavButton {...buttonProps} to={path}>
-          {label}
-        </NavButton>
-      ) : (
-        <Button {...buttonProps} onClick={action}>
-          {label}
-        </Button>
-      )}
-    </div>
+  return path ? (
+    <NavButton {...buttonProps} to={path}>
+      {label}
+    </NavButton>
+  ) : (
+    <Button {...buttonProps} onClick={action}>
+      {label}
+    </Button>
   );
 };
