@@ -37,7 +37,7 @@ export const RobotPage: React.FC = () => {
                 onAction({ type: RobotActionType.MoveForward })
               }
               handlePlaceOnBoard={() =>
-                onAction({ type: RobotActionType.PlaceOnBoard })
+                onAction({ type: RobotActionType.PlaceRandomly })
               }
               handleLeftTurn={() =>
                 onAction({ type: RobotActionType.RotateLeft })

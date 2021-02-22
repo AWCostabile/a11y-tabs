@@ -26,9 +26,11 @@ export const createRobotReducer = ({
 ): IRobotState => {
   if (
     !state.isOnBoard &&
-    ![RobotActionType.PlaceOnBoard, RobotActionType.ReportLocation].includes(
-      action.type,
-    )
+    ![
+      RobotActionType.PlaceOnBoard,
+      RobotActionType.PlaceRandomly,
+      RobotActionType.ReportLocation,
+    ].includes(action.type)
   ) {
     return state;
   }
