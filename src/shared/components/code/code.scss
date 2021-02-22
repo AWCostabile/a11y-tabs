@@ -1,4 +1,4 @@
-.code {
+.code-full {
   background-color: #444;
   border-radius: 8px;
   color: #fff;
@@ -6,4 +6,15 @@
   margin: 16px 0;
   padding: 16px;
   width: calc(100% - 32px);
+}
+
+.code-tag {
+  background-color: #ebebeb;
+  border-radius: 3px;
+  color: #d40000;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 1.1em;
+  font-weight: 500;
+  padding: 2px 5px;
 }

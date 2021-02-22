@@ -1,5 +1,12 @@
 import React from 'react';
 
-export const Code: React.FC = ({ children }) => (
-  <pre className="code">{children}</pre>
-);
+interface ICodeProps {
+  full?: boolean;
+}
+
+export const Code: React.FC<ICodeProps> = ({ children, full }) =>
+  full ? (
+    <pre className="code-full">{children}</pre>
+  ) : (
+    <span className="code-tag">{children}</span>
+  );
