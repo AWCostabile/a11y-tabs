@@ -32,6 +32,7 @@ export const NavButton: React.FC<INavButtonProps> = ({
   return (
     <Button
       {...props}
+      ariaRole="tab"
       onClick={isActive('Control') ? onNewWindow : onCurrentWindow}
       onMiddleClick={onNewWindow}
     >

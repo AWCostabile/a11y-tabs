@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, RefObject } from 'react';
+import React, { AriaAttributes, PropsWithChildren, RefObject } from 'react';
 import { IUiComponent } from 'shared/types/ui-component';
 import { classNames } from 'shared/utils/classnames';
 import { extractStrings } from 'shared/utils/extract-strings';
@@ -6,6 +6,7 @@ import { ClickEvent, FocusEvent } from 'shared/types/general';
 
 export interface IButtonProps extends IUiComponent {
   ariaHidden?: boolean;
+  ariaRole?: AriaAttributes['aria-roledescription'];
   disabled?: boolean;
   label?: string;
   onBlur?: (event: FocusEvent<HTMLButtonElement>) => void;
@@ -22,6 +23,8 @@ export const Button = React.forwardRef<
 >(
   (
     {
+      ariaHidden,
+      ariaRole,
       className,
       children,
       disabled,
@@ -39,7 +42,8 @@ export const Button = React.forwardRef<
       <button
         {...rest}
         aria-label={ariaLabel}
-        aria-hidden={disabled}
+        aria-hidden={disabled || ariaHidden}
+        aria-roledescription={ariaRole}
         className={classNames(
           'button',
           primary && 'primary',

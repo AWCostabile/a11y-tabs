@@ -19,6 +19,7 @@ export const DemoLayout: React.FC<IDemoLayout> = ({
   return (
     <DocumentTitle title={subTitle}>
       <ColSection
+        ariaRole="tabpanel"
         header={{
           actions: navRoutes.map(({ path, label }) => ({
             label,
