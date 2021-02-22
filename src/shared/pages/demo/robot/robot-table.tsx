@@ -37,8 +37,8 @@ export const RobotTable: React.FC<IRobotTableProps> = ({
     return {
       boardSize,
       isPortrait,
-      xUnits: Math.floor(boardSize / (bounds.x + 1)),
-      yUnits: Math.floor(boardSize / (bounds.y + 1)),
+      xUnits: Math.floor(boardSize / bounds.x),
+      yUnits: Math.floor(boardSize / bounds.y),
     };
   }, [height, width, bounds.x, bounds.y]);
 

@@ -1,2 +1,2 @@
 import './robot-styles.scss';
-export * from './robot';
+export * from './robot-page';

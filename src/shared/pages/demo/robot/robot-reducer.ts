@@ -43,7 +43,7 @@ export const createRobotReducer = ({
         ...state,
         quotedText: [
           getRobotQueryText(state, bounds),
-          ...state.quotedText.slice(0, maxQuotedLines),
+          ...state.quotedText.slice(0, maxQuotedLines - 1),
         ],
       };
     case RobotActionType.RotateLeft:

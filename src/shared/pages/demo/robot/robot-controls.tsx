@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from 'shared/components/button';
 import { RowSection, RowSectionCell } from 'shared/components/section';
 import { KeyboardKeys } from 'shared/types/general';

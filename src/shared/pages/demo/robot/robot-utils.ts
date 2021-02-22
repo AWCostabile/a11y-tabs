@@ -10,11 +10,11 @@ export const getNextRobotCoords = (
   if ([RobotDirection.NORTH, RobotDirection.SOUTH].includes(direction)) {
     const y = coords.y + (direction === RobotDirection.SOUTH ? 1 : -1);
 
-    return y >= 0 && y <= bounds.y ? { ...coords, y } : coords;
+    return y >= 0 && y < bounds.y ? { ...coords, y } : coords;
   } else {
     const x = coords.x + (direction === RobotDirection.EAST ? 1 : -1);
 
-    return x >= 0 && x <= bounds.x ? { ...coords, x } : coords;
+    return x >= 0 && x < bounds.x ? { ...coords, x } : coords;
   }
 };
 
@@ -77,8 +77,8 @@ export const getRobotQueryText = (
     return 'I am currently not on the board!';
   }
 
-  const xEdge = coords.x === 0 ? 'left' : coords.x === bounds.x && 'right';
-  const yEdge = coords.y === 0 ? 'top' : coords.y === bounds.y && 'bottom';
+  const xEdge = coords.x === 0 ? 'left' : coords.x === bounds.x - 1 && 'right';
+  const yEdge = coords.y === 0 ? 'top' : coords.y === bounds.y - 1 && 'bottom';
 
   let position: string;
 
