@@ -8,7 +8,7 @@ export const getNextRobotCoords = (
   bounds: IRobotCoords,
 ): IRobotCoords => {
   if ([RobotDirection.NORTH, RobotDirection.SOUTH].includes(direction)) {
-    const y = coords.y + (direction === RobotDirection.SOUTH ? 1 : -1);
+    const y = coords.y + (direction === RobotDirection.SOUTH ? -1 : 1);
 
     return y >= 0 && y < bounds.y ? { ...coords, y } : coords;
   } else {
@@ -72,13 +72,18 @@ export const getRobotRightHandTurn = (
 export const getRobotQueryText = (
   { coords, direction, isOnBoard }: IRobotState,
   bounds: IRobotCoords,
-): string => {
+): string | undefined => {
   if (!isOnBoard) {
-    return 'I am currently not on the board!';
+    console.warn(
+      'Tried to make the robot report when it is currently not on the board!',
+    );
+
+    return;
   }
 
   const xEdge = coords.x === 0 ? 'left' : coords.x === bounds.x - 1 && 'right';
-  const yEdge = coords.y === 0 ? 'top' : coords.y === bounds.y - 1 && 'bottom';
+  const yEdge = coords.y === 0 ? 'bottom' : coords.y === bounds.y - 1 && 'top';
+  const yFromTop = bounds.y - coords.y - 1;
 
   let position: string;
 
@@ -87,14 +92,14 @@ export const getRobotQueryText = (
   if (xEdge && yEdge) {
     position = `at the ${yEdge} ${xEdge} corner`;
   } else if (xEdge) {
-    position = `at the ${xEdge} edge, ${toSpaces(coords.y, 'top')}`;
+    position = `at the ${xEdge} edge, ${toSpaces(yFromTop, 'top')}`;
   } else if (yEdge) {
     position = `at the ${yEdge} edge, ${toSpaces(coords.x, 'left')}`;
   } else {
-    position = `${toSpaces(coords.x, 'left')}, ${toSpaces(coords.y, 'top')}`;
+    position = `${toSpaces(coords.x, 'left')}, ${toSpaces(yFromTop, 'top')}`;
   }
 
-  return `I am currently ${position}, and facing ${direction}!`;
+  return `I am currently ${position}, position [${coords.x}, ${coords.y}], and facing ${direction}!`;
 };
 
 // Creates a

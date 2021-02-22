@@ -39,13 +39,16 @@ export const createRobotReducer = ({
     case RobotActionType.PlaceOnBoard:
       return { ...state, ...getRandomDirectionAndPosition(bounds, true) };
     case RobotActionType.ReportLocation:
-      return {
-        ...state,
-        quotedText: [
-          getRobotQueryText(state, bounds),
-          ...state.quotedText.slice(0, maxQuotedLines - 1),
-        ],
-      };
+      const report = getRobotQueryText(state, bounds);
+      return report
+        ? {
+            ...state,
+            quotedText: [
+              report,
+              ...state.quotedText.slice(0, maxQuotedLines - 1),
+            ],
+          }
+        : state;
     case RobotActionType.RotateLeft:
       return { ...state, direction: getRobotLeftHandTurn(state.direction) };
     case RobotActionType.RotateRight:

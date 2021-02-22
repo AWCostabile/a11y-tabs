@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import React from 'react';
 
 export enum KeyboardKeys {
   ARROW_LEFT = 'ArrowLeft',
@@ -11,4 +11,8 @@ export enum KeyboardKeys {
 
 export type ClickEvent<
   DomElement extends HTMLElement = HTMLElement
-> = MouseEvent<DomElement, globalThis.MouseEvent>;
+> = React.MouseEvent<DomElement, globalThis.MouseEvent>;
+
+export type FocusEvent<
+  DomElement extends HTMLElement = HTMLElement
+> = React.FocusEvent<DomElement>;

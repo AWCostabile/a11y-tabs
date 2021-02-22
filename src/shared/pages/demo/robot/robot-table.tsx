@@ -46,7 +46,7 @@ export const RobotTable: React.FC<IRobotTableProps> = ({
     height: sizes.yUnits,
     width: sizes.xUnits,
     left: sizes.xUnits * coords.x,
-    top: sizes.yUnits * coords.y,
+    bottom: sizes.yUnits * coords.y,
   };
 
   return (

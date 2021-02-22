@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button } from 'shared/components/button';
 import { RowSection, RowSectionCell } from 'shared/components/section';
 import { KeyboardKeys } from 'shared/types/general';
@@ -25,6 +25,7 @@ export const RobotControls: React.FC<IRobotControlsProps> = ({
 }) => {
   const action = useRef(KeyboardKeys.ENTER);
   const simulation = useRef<NodeJS.Timer | number>(0);
+  const [isSimulating, setIsSimulating] = useState(false);
 
   const triggerKeyPress = (key: KeyboardKeys) => {
     // Create a keydown event to activate one of the robot's actions
@@ -48,12 +49,14 @@ export const RobotControls: React.FC<IRobotControlsProps> = ({
     if (simulation.current) {
       clearInterval(simulation.current as NodeJS.Timer);
       simulation.current = 0;
+      setIsSimulating(false);
     } else {
       if (!isOnBoard) {
         triggerKeyPress(KeyboardKeys.ENTER);
       }
 
       simulation.current = setInterval(() => handleSimulation(), 1000);
+      setIsSimulating(true);
     }
   };
 
@@ -96,7 +99,7 @@ export const RobotControls: React.FC<IRobotControlsProps> = ({
     <RowSection>
       <RowSectionCell>
         <Button className="robot-button" onClick={handleToggleSimulation}>
-          {simulation.current ? 'Stop Automation' : 'Automate Robot'}
+          {isSimulating ? 'Stop Automation' : 'Automate Robot'}
         </Button>
         <br />
         <Button className="robot-button" onClick={handleReportLocation}>
