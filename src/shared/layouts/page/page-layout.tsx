@@ -19,9 +19,9 @@ export const PageLayout: React.FC<IPageProps> = ({
 }) => (
   <DocumentTitle title={title}>
     <div className={classNames('page-layout', className)}>
-      {header && <div className="page-header">{header}</div>}
-      <div className="page-body">{children}</div>
-      {footer && <div className="page-footer">{footer}</div>}
+      {header && <header className="page-header">{header}</header>}
+      <article className="page-body">{children}</article>
+      {footer && <footer className="page-footer">{footer}</footer>}
     </div>
   </DocumentTitle>
 );

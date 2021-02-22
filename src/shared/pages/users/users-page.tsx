@@ -17,7 +17,9 @@ export const UsersPage: React.FC = () => {
   }, []);
 
   const header = (
-    <React.Fragment>Users {users === null && <Spinner />}</React.Fragment>
+    <React.Fragment>
+      <h1>Users</h1> {users === null && <Spinner />}
+    </React.Fragment>
   );
 
   return (

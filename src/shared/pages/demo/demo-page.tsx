@@ -5,7 +5,7 @@ import { demoRoutes } from './nav-routes';
 
 export const DemoPage: React.FC = () => {
   return (
-    <PageLayout header="Demo" title="Demo Page">
+    <PageLayout header={<h1>Demo</h1>} title="Demo Page">
       <p>Demonstration of Inner Tabs</p>
       <Switch>
         {demoRoutes.map((route) => (

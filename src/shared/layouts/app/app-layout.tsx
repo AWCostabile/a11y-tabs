@@ -4,7 +4,7 @@ import './app-layout.scss';
 
 export const AppLayout: React.FC = ({ children }) => (
   <div className="app-layout">
-    <div className="app-header">
+    <header className="app-header">
       <NavBar
         navRoutes={[
           { path: '/home', label: 'Home' },
@@ -16,8 +16,8 @@ export const AppLayout: React.FC = ({ children }) => (
           familyName: 'Costabile',
         }}
       />
-    </div>
-    <div className="app-body">{children}</div>
-    <div className="app-footer">Anthony Costabile &copy; 2021</div>
+    </header>
+    <main className="app-body">{children}</main>
+    <footer className="app-footer">Anthony Costabile &copy; 2021</footer>
   </div>
 );

@@ -2,12 +2,13 @@ import React, { PropsWithChildren, RefObject } from 'react';
 import { classNames } from 'shared/utils/classnames';
 import { extractStrings } from 'shared/utils/extract-strings';
 
-interface IButtonProps {
+export interface IButtonProps {
   ariaHidden?: boolean;
   className?: string;
   disabled?: boolean;
   label?: string;
   onClick?: () => void;
+  onMiddleClick?: () => void;
   primary?: boolean;
   ref?: RefObject<HTMLButtonElement>;
 }
@@ -15,22 +16,33 @@ interface IButtonProps {
 export const Button = React.forwardRef<
   HTMLButtonElement,
   PropsWithChildren<IButtonProps>
->(({ className, children, disabled, label, onClick, primary }, ref) => {
-  const ariaLabel = label || extractStrings(children);
+>(
+  (
+    { className, children, disabled, label, onClick, onMiddleClick, primary },
+    ref,
+  ) => {
+    const ariaLabel = label || extractStrings(children);
 
-  return (
-    <button
-      aria-label={ariaLabel}
-      className={classNames(
-        'button',
-        primary && 'primary',
-        disabled && 'disabled',
-        className,
-      )}
-      onClick={disabled ? undefined : onClick}
-      ref={ref}
-    >
-      <span className="button-label">{children}</span>
-    </button>
-  );
-});
+    return (
+      <button
+        aria-label={ariaLabel}
+        className={classNames(
+          'button',
+          primary && 'primary',
+          disabled && 'disabled',
+          className,
+        )}
+        onClick={disabled ? undefined : onClick}
+        onMouseUp={(event) => {
+          if (!disabled && onMiddleClick && event.button === 1) {
+            event.preventDefault();
+            onMiddleClick();
+          }
+        }}
+        ref={ref}
+      >
+        <span className="button-label">{children}</span>
+      </button>
+    );
+  },
+);

@@ -28,13 +28,13 @@ export const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <PageLayout className="home-page" header="Home" title="Home">
+    <PageLayout className="home-page" header={<h1>Home</h1>} title="Home">
       <ColSection>
         <p>Outline of this project, as per PDF displayed below</p>
         <embed
           src="/assets/challenge.pdf"
           width={sizes.width - 48}
-          height={sizes.height - 200}
+          height={sizes.height - 220}
           type="application/pdf"
         />
       </ColSection>
