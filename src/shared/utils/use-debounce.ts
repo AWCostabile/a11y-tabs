@@ -12,11 +12,13 @@ export const useDebounce = <Fn extends Function>(fn: Fn, delay: number) => {
 
   useEffect(() => clearTimer, []);
 
-  return function (this: ThisType<Fn>, ...args: any[]) {
+  const debounceFunction = function (this: ThisType<Fn>, ...args: any[]) {
     clearTimer();
 
     timer = setTimeout(() => {
       fn.apply(this, Array.from(args));
     }, delay);
   };
+
+  return (debounceFunction as unknown) as Fn;
 };

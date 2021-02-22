@@ -3,6 +3,7 @@ import { Image } from 'shared/components/image';
 import { NavButton } from 'shared/components/nav-button';
 import { RowSection, RowSectionCell } from 'shared/components/section';
 import { UserAvatar } from 'shared/components/user-avatar';
+import { LOGO } from 'shared/constants/statics';
 import { IUserModel } from 'shared/types/models/user-model';
 import { INavRoute } from 'shared/types/nav-routes';
 
@@ -14,12 +15,7 @@ interface INavBarProps {
 export const NavBar: React.FC<INavBarProps> = ({ navRoutes, userInfo }) => (
   <RowSection className="nav-bar">
     <RowSectionCell>
-      <Image
-        alt="accessibility logo"
-        path="/assets/a11y-logo.jpg"
-        width={48}
-        height={28}
-      />
+      <Image alt="accessibility logo" path={LOGO} width={48} height={28} />
     </RowSectionCell>
     <RowSectionCell grow>
       {navRoutes.map((navRoute) => (

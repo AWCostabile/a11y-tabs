@@ -9,7 +9,6 @@ export const AppLayout: React.FC = ({ children }) => (
         navRoutes={[
           { path: '/home', label: 'Home' },
           { path: '/demo', label: 'Demo' },
-          { path: '/users', label: 'Users' },
         ]}
         userInfo={{
           givenName: 'Anthony',
@@ -18,6 +17,8 @@ export const AppLayout: React.FC = ({ children }) => (
       />
     </header>
     <main className="app-body">{children}</main>
-    <footer className="app-footer">Anthony Costabile &copy; 2021</footer>
+    <footer className="app-footer">
+      <div className="app-footer-content">Anthony Costabile &copy; 2021</div>
+    </footer>
   </div>
 );

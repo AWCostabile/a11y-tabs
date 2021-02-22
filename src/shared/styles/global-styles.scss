@@ -15,6 +15,22 @@ body,
   min-width: 100vw;
 }
 
+a,
+a:link,
+a:visited {
+  color: #2277bb;
+  font-weight: 500;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 p {
   margin: 8px 0;
+}
+
+pre {
+  font-family: monospace;
 }

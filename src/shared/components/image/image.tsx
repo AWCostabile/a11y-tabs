@@ -1,19 +1,23 @@
 import React from 'react';
+import { IUiComponent } from 'shared/types/ui-component';
+import { classNames } from 'shared/utils/classnames';
 
-interface IImageProps {
+export interface IImageProps extends IUiComponent {
   alt?: string;
-  height?: number;
+  height?: number | string;
   path: string;
-  size?: number;
-  width?: number;
+  size?: number | string;
+  width?: number | string;
 }
 
 export const Image: React.FC<IImageProps> = ({
   alt,
-  height,
+  className,
   path,
   size = 32,
+  height,
   width,
+  style,
 }) => {
   if (IS_DEVELOPMENT && !alt) {
     console.error(
@@ -23,11 +27,14 @@ export const Image: React.FC<IImageProps> = ({
 
   return (
     <img
-      className="image"
+      className={classNames('image', className)}
       src={path}
       alt={alt}
-      height={height || size}
-      width={width || size}
+      style={{
+        height: height || size,
+        width: width || size,
+        ...style,
+      }}
     />
   );
 };

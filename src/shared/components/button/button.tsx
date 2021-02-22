@@ -1,10 +1,10 @@
 import React, { PropsWithChildren, RefObject } from 'react';
+import { IUiComponent } from 'shared/types/ui-component';
 import { classNames } from 'shared/utils/classnames';
 import { extractStrings } from 'shared/utils/extract-strings';
 
-export interface IButtonProps {
+export interface IButtonProps extends IUiComponent {
   ariaHidden?: boolean;
-  className?: string;
   disabled?: boolean;
   label?: string;
   onClick?: () => void;
@@ -18,7 +18,16 @@ export const Button = React.forwardRef<
   PropsWithChildren<IButtonProps>
 >(
   (
-    { className, children, disabled, label, onClick, onMiddleClick, primary },
+    {
+      className,
+      children,
+      disabled,
+      label,
+      onClick,
+      onMiddleClick,
+      primary,
+      style,
+    },
     ref,
   ) => {
     const ariaLabel = label || extractStrings(children);
@@ -26,12 +35,14 @@ export const Button = React.forwardRef<
     return (
       <button
         aria-label={ariaLabel}
+        aria-hidden={disabled}
         className={classNames(
           'button',
           primary && 'primary',
           disabled && 'disabled',
           className,
         )}
+        disabled={disabled}
         onClick={disabled ? undefined : onClick}
         onMouseUp={(event) => {
           if (!disabled && onMiddleClick && event.button === 1) {
@@ -40,6 +51,7 @@ export const Button = React.forwardRef<
           }
         }}
         ref={ref}
+        style={style}
       >
         <span className="button-label">{children}</span>
       </button>

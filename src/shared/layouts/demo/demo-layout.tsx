@@ -16,8 +16,6 @@ export const DemoLayout: React.FC<IDemoLayout> = ({
 }) => {
   const match = useRouteMatch();
 
-  console.log(match);
-
   return (
     <DocumentTitle title={subTitle}>
       <ColSection
@@ -27,6 +25,7 @@ export const DemoLayout: React.FC<IDemoLayout> = ({
             path,
             primary: match.path === path,
           })),
+          bottomBorder: true,
           title: subTitle,
         }}
       >

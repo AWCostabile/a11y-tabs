@@ -22,6 +22,7 @@
 
   &:active {
     padding: 6px 12px;
+
     > .button-label {
       padding-top: 1px;
     }
@@ -30,6 +31,10 @@
   &.primary {
     color: #fff;
     background-color: #2277bb;
+
+    &:focus {
+      background: radial-gradient(#4499dd 50%, #2277bb);
+    }
   }
 
   &.disabled {
@@ -37,13 +42,10 @@
     box-shadow: none;
     border: 1px solid #bbb;
     color: #444;
+    padding: 5px 11px;
 
-    .button-label {
-      padding: 5px 11px;
-    }
-
-    &:active > .button-label {
-      padding: 5px 11px;
+    &:focus {
+      background: #ddd;
     }
   }
 }
