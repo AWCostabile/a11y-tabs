@@ -2,13 +2,14 @@ import React, { PropsWithChildren, RefObject } from 'react';
 import { IUiComponent } from 'shared/types/ui-component';
 import { classNames } from 'shared/utils/classnames';
 import { extractStrings } from 'shared/utils/extract-strings';
+import { ClickEvent } from 'shared/types/general';
 
 export interface IButtonProps extends IUiComponent {
   ariaHidden?: boolean;
   disabled?: boolean;
   label?: string;
-  onClick?: () => void;
-  onMiddleClick?: () => void;
+  onClick?: (event: ClickEvent<HTMLButtonElement>) => void;
+  onMiddleClick?: (event: ClickEvent<HTMLButtonElement>) => void;
   primary?: boolean;
   ref?: RefObject<HTMLButtonElement>;
 }
@@ -47,7 +48,7 @@ export const Button = React.forwardRef<
         onMouseUp={(event) => {
           if (!disabled && onMiddleClick && event.button === 1) {
             event.preventDefault();
-            onMiddleClick();
+            onMiddleClick(event);
           }
         }}
         ref={ref}
