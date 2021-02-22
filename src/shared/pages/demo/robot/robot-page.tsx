@@ -20,7 +20,7 @@ export const RobotPage: React.FC = () => {
 
   // Render Robot Information
   return (
-    <DemoLayout navRoutes={demoRoutes} subTitle="Robot Game Excersize">
+    <DemoLayout navRoutes={demoRoutes} subTitle="Toy Robot Exercise">
       <RobotTable {...state} bounds={bounds}>
         <ColSection
           className="robot-controls-container"
