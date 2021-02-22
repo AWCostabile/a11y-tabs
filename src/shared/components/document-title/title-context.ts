@@ -7,7 +7,5 @@ interface ITitleContext {
 
 export const TitleContext = createContext<ITitleContext>({
   title: 'loading...',
-  setTitle: () => {
-    return;
-  },
+  setTitle: () => null,
 });
